@@ -3,6 +3,9 @@
 
 Writes a single one-line review of the entrant's own Monday (114 characters,
 no trailing newline) to /output/entry.txt, per the competition gate.
+Built for the judging criteria: one specific character (Dave from standup),
+one visual scene (arriving on time for the 9 a.m. meeting), and the turn in
+the final clause (still asked if I was new here).
 """
 
 import os
@@ -14,7 +17,7 @@ def main() -> None:
     # Self-check the gate before writing: 1-200 chars, single line, no
     # trailing newline. Fail loudly instead of ever emitting an invalid entry.
     if not (1 <= len(LINE) <= 200) or "\n" in LINE or not LINE.strip():
-        raise SystemExit(f"entry violates gate: {len(LINE)} chars")
+        raise SystemExit(f"entry violates the 1-200 char single-line gate: {len(LINE)} chars")
     out = os.environ.get("OUTPUT_PATH", "/output/entry.txt")
     parent = os.path.dirname(out)
     if parent:
